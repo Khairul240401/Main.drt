@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  void myDialog(BuildContext ctx) {
+    showDialog(
+      context: ctx,
+      builder: (BuildContext kontext) {
+        return AlertDialog(
+          title: Text('Hubungi Kami'),
+          content: Text('Hubungi Kami di Khairul@alfisyahrin'),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.of(kontext).pop(),
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Tour Labuan Bajo'),
+        ),
+        body: Builder(builder: (context) {
+          return SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('Selamat Datang di Indonesia'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 8.0, bottom: 8.0, right: 8.0, left: 8.0),
+                    child: Text('Nikmati Alam yang Indah'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image(
+                      image: NetworkImage(
+                          'https://asset.kompas.com/crops/ZKtHbBXX47ZaVGZu9BiQwo6A9sI=/50x0:1000x633/750x500/data/photo/2020/11/06/5fa4e37d84b13.jpg'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Image.network(
+                      'https://asset.kompas.com/crops/ZKtHbBXX47ZaVGZu9BiQwo6A9sI=/50x0:1000x633/750x500/data/photo/2020/11/06/5fa4e37d84b13.jpg',
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => myDialog(context),
+                    child: Text('Kontak Kami'),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+}
